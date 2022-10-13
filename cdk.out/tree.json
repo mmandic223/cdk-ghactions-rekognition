@@ -414,21 +414,21 @@
           "version": "2.44.0"
         }
       },
-      "dev-stack-githubconnection": {
-        "id": "dev-stack-githubconnection",
-        "path": "dev-stack-githubconnection",
+      "cdk-ghactions-rekognition": {
+        "id": "cdk-ghactions-rekognition",
+        "path": "cdk-ghactions-rekognition",
         "children": {
           "prod-ghprovider-markomandic": {
             "id": "prod-ghprovider-markomandic",
-            "path": "dev-stack-githubconnection/prod-ghprovider-markomandic",
+            "path": "cdk-ghactions-rekognition/prod-ghprovider-markomandic",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "dev-stack-githubconnection/prod-ghprovider-markomandic/Resource",
+                "path": "cdk-ghactions-rekognition/prod-ghprovider-markomandic/Resource",
                 "children": {
                   "Default": {
                     "id": "Default",
-                    "path": "dev-stack-githubconnection/prod-ghprovider-markomandic/Resource/Default",
+                    "path": "cdk-ghactions-rekognition/prod-ghprovider-markomandic/Resource/Default",
                     "constructInfo": {
                       "fqn": "aws-cdk-lib.CfnResource",
                       "version": "2.44.0"
@@ -448,11 +448,11 @@
           },
           "Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider": {
             "id": "Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider",
-            "path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider",
+            "path": "cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider",
             "children": {
               "Staging": {
                 "id": "Staging",
-                "path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Staging",
+                "path": "cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Staging",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.AssetStaging",
                   "version": "2.44.0"
@@ -460,7 +460,7 @@
               },
               "Role": {
                 "id": "Role",
-                "path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role",
+                "path": "cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.44.0"
@@ -468,7 +468,7 @@
               },
               "Handler": {
                 "id": "Handler",
-                "path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
+                "path": "cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.44.0"
@@ -482,11 +482,11 @@
           },
           "prod-deploymentrole-markomandic": {
             "id": "prod-deploymentrole-markomandic",
-            "path": "dev-stack-githubconnection/prod-deploymentrole-markomandic",
+            "path": "cdk-ghactions-rekognition/prod-deploymentrole-markomandic",
             "children": {
               "Resource": {
                 "id": "Resource",
-                "path": "dev-stack-githubconnection/prod-deploymentrole-markomandic/Resource",
+                "path": "cdk-ghactions-rekognition/prod-deploymentrole-markomandic/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                   "aws:cdk:cloudformation:props": {
@@ -546,7 +546,7 @@
           },
           "DeploymentRoleArn": {
             "id": "DeploymentRoleArn",
-            "path": "dev-stack-githubconnection/DeploymentRoleArn",
+            "path": "cdk-ghactions-rekognition/DeploymentRoleArn",
             "constructInfo": {
               "fqn": "aws-cdk-lib.CfnOutput",
               "version": "2.44.0"
@@ -554,11 +554,11 @@
           },
           "CDKMetadata": {
             "id": "CDKMetadata",
-            "path": "dev-stack-githubconnection/CDKMetadata",
+            "path": "cdk-ghactions-rekognition/CDKMetadata",
             "children": {
               "Default": {
                 "id": "Default",
-                "path": "dev-stack-githubconnection/CDKMetadata/Default",
+                "path": "cdk-ghactions-rekognition/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnResource",
                   "version": "2.44.0"
@@ -566,7 +566,7 @@
               },
               "Condition": {
                 "id": "Condition",
-                "path": "dev-stack-githubconnection/CDKMetadata/Condition",
+                "path": "cdk-ghactions-rekognition/CDKMetadata/Condition",
                 "constructInfo": {
                   "fqn": "aws-cdk-lib.CfnCondition",
                   "version": "2.44.0"

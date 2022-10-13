@@ -126,27 +126,27 @@
       },
       "displayName": "dev-stack-rekognition"
     },
-    "dev-stack-githubconnection.assets": {
+    "cdk-ghactions-rekognition.assets": {
       "type": "cdk:asset-manifest",
       "properties": {
-        "file": "dev-stack-githubconnection.assets.json",
+        "file": "cdk-ghactions-rekognition.assets.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
       }
     },
-    "dev-stack-githubconnection": {
+    "cdk-ghactions-rekognition": {
       "type": "aws:cloudformation:stack",
       "environment": "aws://unknown-account/unknown-region",
       "properties": {
-        "templateFile": "dev-stack-githubconnection.template.json",
+        "templateFile": "cdk-ghactions-rekognition.template.json",
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d71da0b7e0af18ac57747ee499feeb80dd272b973c58bf00cafad6a8640d1787.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/188c0d8fcc30f821db405c810abc5022b5f1a7a7eafb1e4e23d5bf65d39fd231.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
-          "dev-stack-githubconnection.assets"
+          "cdk-ghactions-rekognition.assets"
         ],
         "lookupRole": {
           "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
@@ -155,65 +155,65 @@
         }
       },
       "dependencies": [
-        "dev-stack-githubconnection.assets"
+        "cdk-ghactions-rekognition.assets"
       ],
       "metadata": {
-        "/dev-stack-githubconnection/prod-ghprovider-markomandic/Resource/Default": [
+        "/cdk-ghactions-rekognition/prod-ghprovider-markomandic/Resource/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "prodghprovidermarkomandicEA791E1C"
           }
         ],
-        "/dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role": [
+        "/cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
           }
         ],
-        "/dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler": [
+        "/cdk-ghactions-rekognition/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0"
           }
         ],
-        "/dev-stack-githubconnection/prod-deploymentrole-markomandic/Resource": [
+        "/cdk-ghactions-rekognition/prod-deploymentrole-markomandic/Resource": [
           {
             "type": "aws:cdk:logicalId",
             "data": "proddeploymentrolemarkomandic05716824"
           }
         ],
-        "/dev-stack-githubconnection/DeploymentRoleArn": [
+        "/cdk-ghactions-rekognition/DeploymentRoleArn": [
           {
             "type": "aws:cdk:logicalId",
             "data": "DeploymentRoleArn"
           }
         ],
-        "/dev-stack-githubconnection/CDKMetadata/Default": [
+        "/cdk-ghactions-rekognition/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadata"
           }
         ],
-        "/dev-stack-githubconnection/CDKMetadata/Condition": [
+        "/cdk-ghactions-rekognition/CDKMetadata/Condition": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
           }
         ],
-        "/dev-stack-githubconnection/BootstrapVersion": [
+        "/cdk-ghactions-rekognition/BootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "BootstrapVersion"
           }
         ],
-        "/dev-stack-githubconnection/CheckBootstrapVersion": [
+        "/cdk-ghactions-rekognition/CheckBootstrapVersion": [
           {
             "type": "aws:cdk:logicalId",
             "data": "CheckBootstrapVersion"
           }
         ]
       },
-      "displayName": "dev-stack-githubconnection"
+      "displayName": "cdk-ghactions-rekognition"
     }
   }
 }

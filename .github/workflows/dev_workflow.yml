@@ -56,7 +56,7 @@ jobs:
     - name: Format code
       run: |
         make format
-    - name: cdk diff networking-stack-mm
+    - name: cdk synth
       uses: youyo/aws-cdk-github-actions@v2
       with:
         cdk_subcommand: 'synth'

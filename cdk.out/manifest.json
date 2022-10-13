@@ -1,0 +1,219 @@
+{
+  "version": "21.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "dev-stack-rekognition.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "dev-stack-rekognition.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "dev-stack-rekognition": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "dev-stack-rekognition.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fc9f3b28fb0a8473cba5999d638fcd02636c072984031d147f08a08db2d045c1.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "dev-stack-rekognition.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "dev-stack-rekognition.assets"
+      ],
+      "metadata": {
+        "/dev-stack-rekognition/lambda_api_get_func/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdaapigetfuncServiceRole73956D0B"
+          }
+        ],
+        "/dev-stack-rekognition/lambda_api_get_func/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdaapigetfunc6B10E17E"
+          }
+        ],
+        "/dev-stack-rekognition/lambda_mm_loggroup_get/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdammloggroupgetEAE46A29"
+          }
+        ],
+        "/dev-stack-rekognition/rekognition-access/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rekognitionaccessDFFD7B13"
+          }
+        ],
+        "/dev-stack-rekognition/rekognition-bucket/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rekognitionbucket6396E1EA"
+          }
+        ],
+        "/dev-stack-rekognition/rekognition-bucket/AllowBucketNotificationsTodevstackrekognitionlambdaapigetfunc9D1A9C16": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rekognitionbucketAllowBucketNotificationsTodevstackrekognitionlambdaapigetfunc9D1A9C1634952CF9"
+          }
+        ],
+        "/dev-stack-rekognition/rekognition-bucket/Notifications/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "rekognitionbucketNotifications9D028ED7"
+          }
+        ],
+        "/dev-stack-rekognition/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleB6FB88EC"
+          }
+        ],
+        "/dev-stack-rekognition/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleDefaultPolicy2CF63D36"
+          }
+        ],
+        "/dev-stack-rekognition/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db8347ECC3691"
+          }
+        ],
+        "/dev-stack-rekognition/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/dev-stack-rekognition/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/dev-stack-rekognition/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/dev-stack-rekognition/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "dev-stack-rekognition"
+    },
+    "dev-environment-stack-githubconnection.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "dev-environment-stack-githubconnection.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "dev-environment-stack-githubconnection": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "dev-environment-stack-githubconnection.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/2be7721b8e7a3980938d4c016c853ab442f2e0bc9e60eb6add8767d96fddbc1b.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "dev-environment-stack-githubconnection.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "dev-environment-stack-githubconnection.assets"
+      ],
+      "metadata": {
+        "/dev-environment-stack-githubconnection/dev-ghprovider-MarkoMandic/Resource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devghproviderMarkoMandicB16F46B9"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/dev-deploymentrole-MarkoMandic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "devdeploymentroleMarkoMandicED6CB0F6"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/DeploymentRoleArn": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "DeploymentRoleArn"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/dev-environment-stack-githubconnection/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "dev-environment-stack-githubconnection"
+    }
+  }
+}

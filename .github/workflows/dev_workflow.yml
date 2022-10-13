@@ -46,16 +46,16 @@ jobs:
         python-version: 3.9
     - name: Install dependencies
       run: |
-        cd cdk_app && make install
+        make install
     - name: Lint with pylint
       run: |
-        cd cdk_app && make lint
-    # - name: Test with pytest
-    #   run: |
-    #     make test
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
     - name: Format code
       run: |
-        cd cdk_app && make format
+        make format
     - name: cdk diff networking-stack-mm
       uses: youyo/aws-cdk-github-actions@v2
       with:

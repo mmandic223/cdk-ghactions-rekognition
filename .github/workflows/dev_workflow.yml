@@ -36,7 +36,7 @@ jobs:
     - name: Assume role using OIDC
       uses: aws-actions/configure-aws-credentials@master
       with:
-        role-to-assume: arn:aws:iam::802288441694:role/mmandic223-rekognition-ghactions-cdk-deploy
+        role-to-assume: arn:aws:iam::802288441694:role/mmandic223-cdk-ghactions-rekognition-deploy
         aws-region: eu-west-1
 
     - uses: actions/checkout@v2

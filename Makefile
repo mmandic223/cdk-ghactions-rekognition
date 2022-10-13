@@ -3,7 +3,7 @@ install:
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv test_hello.py
+	python -m pytest -vv ./tests/unit/test_open_id_connect.py
 
 format:
 	black *.py

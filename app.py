@@ -20,7 +20,7 @@ BussinesLogicStack(app,'dev-stack-rekognition',
             env=Environment(account=os.getenv('AWS_ACCOUNT'),
                             region=os.getenv('AWS_REGION')))
 
-GithubConnection(app,'dev-environment-stack-githubconnection',
+GithubConnection(app,'cdk-ghactions-rekognition',
             env=Environment(account=os.getenv('AWS_ACCOUNT'),
                             region=os.getenv('AWS_REGION')))
 

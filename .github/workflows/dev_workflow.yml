@@ -59,7 +59,7 @@ jobs:
     - name: cdk diff networking-stack-mm
       uses: youyo/aws-cdk-github-actions@v2
       with:
-        cdk_subcommand: 'diff'
+        cdk_subcommand: 'synth'
         actions_comment: false
         cdk_stack: 'cdk-ghactions-rekognition'
 

@@ -15,22 +15,22 @@ jobs:
       (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'deploy'))
     runs-on: ubuntu-latest
     steps:
-      - name: inject slug/short variables
-        uses: rlespinasse/github-slug-action@v3.x
+      # - name: inject slug/short variables
+      #   uses: rlespinasse/github-slug-action@v3.x
 
-      - name: set STAGE variable in environment for next steps
-        run: echo "STAGE=pr-${{ github.event.number }}-${{ env.GITHUB_HEAD_REF_SLUG }}" >> $GITHUB_ENV
+      # - name: set STAGE variable in environment for next steps
+      #   run: echo "STAGE=pr-${{ github.event.number }}-${{ env.GITHUB_HEAD_REF_SLUG }}" >> $GITHUB_ENV
 
-      - name: create a github deployment
-        uses: bobheadxi/deployments@v0.5.2
-        id: deployment
-        with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: ${{ env.STAGE }}
-          ref: ${{ github.head_ref }}
-          no_override: false
-          transient: true
+      # - name: create a github deployment
+      #   uses: bobheadxi/deployments@v0.5.2
+      #   id: deployment
+      #   with:
+      #     step: start
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     env: ${{ env.STAGE }}
+      #     ref: ${{ github.head_ref }}
+      #     no_override: false
+      #     transient: true
 
       - name: checkout the files
         uses: actions/checkout@v2
@@ -84,25 +84,25 @@ jobs:
       - name: cdk deploy dev-stack-rekognition
         uses: youyo/aws-cdk-github-actions@v2
         with:
-          cdk_subcommand: 'deploy'
+          cdk_subcommand: 'synth'
           actions_comment: false
           cdk_args: '--require-approval never'
           cdk_stack: 'dev-stack-rekognition'
 
-      - name: cdk destroy dev-stack-rekognition
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'destroy'
-          actions_comment: false
-          cdk_args: '--require-approval never'
-          cdk_stack: 'dev-stack-rekognition'
+      # - name: cdk destroy dev-stack-rekognition
+      #   uses: youyo/aws-cdk-github-actions@v2
+      #   with:
+      #     cdk_subcommand: 'destroy'
+      #     actions_comment: false
+      #     cdk_args: '--require-approval never'
+      #     cdk_stack: 'dev-stack-rekognition'
 
-      - name: update the github deployment status
-        uses: bobheadxi/deployments@v0.5.2
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: ${{ steps.cdk_deploy.outputs.env_url }}
+      # - name: update the github deployment status
+      #   uses: bobheadxi/deployments@v0.5.2
+      #   if: always()
+      #   with:
+      #     step: finish
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     status: ${{ job.status }}
+      #     deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      #     env_url: ${{ steps.cdk_deploy.outputs.env_url }}

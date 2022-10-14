@@ -80,6 +80,7 @@ jobs:
         deployment_id: ${{ steps.deployment.outputs.deployment_id }}
         env_url: ${{ steps.cdk_deploy.outputs.env_url }}
   delete_build:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     # - name: inject slug/short variables

@@ -93,7 +93,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: delete the github deployments and the corresponding environment
-     - uses: strumwolf/delete-deployment-environment@v2
+      uses: strumwolf/delete-deployment-environment@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: my-environment-name

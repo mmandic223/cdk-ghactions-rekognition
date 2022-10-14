@@ -1,8 +1,9 @@
-name: "Pull Request"
+
+name: "main pipeline"
 on:
-  pull_request:
-    types: [opened]
-    branch: dev
+  push:
+    branches:
+      - 'main'
 permissions:
   id-token: write # required to use OIDC authentication
   contents: read # required to checkout the code from the repo
@@ -10,9 +11,6 @@ permissions:
 jobs:
   deploy:
     permissions: write-all
-    if: |
-      (github.event.action == 'labeled' && github.event.label.name == 'deploy') ||
-      (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'deploy'))
     runs-on: ubuntu-latest
     steps:
       # - name: inject slug/short variables
@@ -73,18 +71,18 @@ jobs:
         run: |
           make format
 
-      - name: cdk diff dev-stack-rekognition
-        uses: youyo/aws-cdk-github-actions@v2
-        with:
-          cdk_subcommand: 'diff'
-          actions_comment: false
-          # cdk_args: '--require-approval never'
-          cdk_stack: 'dev-stack-rekognition'
+      # - name: cdk diff dev-stack-rekognition
+      #   uses: youyo/aws-cdk-github-actions@v2
+      #   with:
+      #     cdk_subcommand: 'diff'
+      #     actions_comment: false
+      #     # cdk_args: '--require-approval never'
+      #     cdk_stack: 'dev-stack-rekognition'
 
-      - name: cdk synth dev-stack-rekognition
+      - name: cdk deploy dev-stack-rekognition
         uses: youyo/aws-cdk-github-actions@v2
         with:
-          cdk_subcommand: 'synth'
+          cdk_subcommand: 'deploy'
           actions_comment: false
           cdk_args: '--require-approval never'
           cdk_stack: 'dev-stack-rekognition'

@@ -1,6 +1,6 @@
 {
  "Resources": {
-  "devghproviderMarkoMandicB16F46B9": {
+  "prodghprovidermarkomandicEA791E1C": {
    "Type": "Custom::AWSCDKOpenIdConnectProvider",
    "Properties": {
     "ServiceToken": {
@@ -17,7 +17,7 @@
    "UpdateReplacePolicy": "Delete",
    "DeletionPolicy": "Delete",
    "Metadata": {
-    "aws:cdk:path": "dev-environment-stack-githubconnection/dev-ghprovider-MarkoMandic/Resource/Default"
+    "aws:cdk:path": "dev-stack-githubconnection/prod-ghprovider-markomandic/Resource/Default"
    }
   },
   "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65": {
@@ -63,7 +63,7 @@
     ]
    },
    "Metadata": {
-    "aws:cdk:path": "dev-environment-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role"
+    "aws:cdk:path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Role"
    }
   },
   "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderHandlerF2C543E0": {
@@ -90,12 +90,12 @@
     "CustomAWSCDKOpenIdConnectProviderCustomResourceProviderRole517FED65"
    ],
    "Metadata": {
-    "aws:cdk:path": "dev-environment-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
+    "aws:cdk:path": "dev-stack-githubconnection/Custom::AWSCDKOpenIdConnectProviderCustomResourceProvider/Handler",
     "aws:asset:path": "asset.494e82802f093e633e580188c7937aef9d6ee0ad4a788d58c647e6bea26d2915",
     "aws:asset:property": "Code"
    }
   },
-  "devdeploymentroleMarkoMandicED6CB0F6": {
+  "proddeploymentrolemarkomandic05716824": {
    "Type": "AWS::IAM::Role",
    "Properties": {
     "AssumeRolePolicyDocument": {
@@ -104,13 +104,13 @@
        "Action": "sts:AssumeRoleWithWebIdentity",
        "Condition": {
         "StringLike": {
-         "token.actions.githubusercontent.com:sub": "repo:mmandic223/rekognition-ghactions-cdk:*"
+         "token.actions.githubusercontent.com:sub": "repo:mmandic223/cdk-ghactions-rekognition:*"
         }
        },
        "Effect": "Allow",
        "Principal": {
         "Federated": {
-         "Ref": "devghproviderMarkoMandicB16F46B9"
+         "Ref": "prodghprovidermarkomandicEA791E1C"
         }
        }
       }
@@ -138,10 +138,10 @@
       "PolicyName": "DeploymentPolicy"
      }
     ],
-    "RoleName": "mmandic223-rekognition-ghactions-cdk-deploy"
+    "RoleName": "mmandic223-cdk-ghactions-rekognition-deploy"
    },
    "Metadata": {
-    "aws:cdk:path": "dev-environment-stack-githubconnection/dev-deploymentrole-MarkoMandic/Resource"
+    "aws:cdk:path": "dev-stack-githubconnection/prod-deploymentrole-markomandic/Resource"
    }
   },
   "CDKMetadata": {
@@ -150,14 +150,14 @@
     "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNTQ6CMBCFz8K+jKgs3BpWriB4AINtxRE6Q9qpxhDuLoSExNV7eT/5DpDnkCXNJ6TadGmPdxiv0uhOzdENGwdjOVi6mIKJrJbK8xuN9arm3qriQYtOqohB2NU2cPR6zTf/V23/cwhWZlKL1C77MsoQZXEzyaAg06SqrzyZdkc4wT5LXgEx9ZEEnYV61R+zGzEhwAAAAA=="
    },
    "Metadata": {
-    "aws:cdk:path": "dev-environment-stack-githubconnection/CDKMetadata/Default"
+    "aws:cdk:path": "dev-stack-githubconnection/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
   }
  },
  "Outputs": {
   "DeploymentRoleArn": {
-   "Value": "arn:aws:iam::982195495700:role/mmandic223-rekognition-ghactions-cdk-deploy"
+   "Value": "arn:aws:iam::982195495700:role/mmandic223-cdk-ghactions-rekognition-deploy"
   }
  },
  "Conditions": {

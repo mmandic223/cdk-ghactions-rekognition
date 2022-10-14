@@ -1,0 +1,27 @@
+name: "Dev commit clean-up"
+
+on:
+  workflow_run:
+    workflows: ["dev pipeline"]
+    types:
+      - completed
+    branch: dev
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: set STAGE variable in environment for next steps
+        run: echo "STAGE=push-${{ env.GITHUB_REPOSITORY_OWNER_PART }}" >> $GITHUB_ENV
+
+      - name: checkout the files
+        uses: actions/checkout@v2
+
+      - name: delete the github deployments and the corresponding environment
+        uses: strumwolf/delete-deployment-environment@v1.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: ${{ env.STAGE }}

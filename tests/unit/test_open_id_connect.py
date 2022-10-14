@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import os
 from github_provider.github_stack.github_stack import AwsGithubActionsPolicyStack
 
-load_dotenv()
 
 environment = os.getenv('ENVIRONMENT')
 app_name = os.getenv('APP_NAME')
@@ -20,7 +19,7 @@ def test_github_provider():
 
 def test_github_oidc_role_created():
     app = core.App()
-    stack = AwsGithubActionsPolicyStack(app, '{0}-stack-rekognition'.format(environment),)
+    stack = AwsGithubActionsPolicyStack(app, 'cdk-ghactions-rekognition',)
     template = assertions.Template.from_stack(stack)
 
     template.has_resource_properties("AWS::IAM::Role", {

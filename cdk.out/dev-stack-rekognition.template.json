@@ -49,7 +49,7 @@
       "Arn"
      ]
     },
-    "FunctionName": "dev-MarkoMandic-recognition",
+    "FunctionName": "prod-markomandic-recognition",
     "Handler": "lambda_rekognition.lambda_handler",
     "Runtime": "python3.9"
    },

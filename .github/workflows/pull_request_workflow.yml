@@ -1,0 +1,107 @@
+name: "Pull Request"
+on:
+  pull_request:
+    types: [opened]
+    branch: dev
+permissions:
+  id-token: write # required to use OIDC authentication
+  contents: read # required to checkout the code from the repo
+
+jobs:
+  deploy:
+    permissions: write-all
+    if: |
+      (github.event.action == 'labeled' && github.event.label.name == 'deploy') ||
+      (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'deploy'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+
+      - name: set STAGE variable in environment for next steps
+        run: echo "STAGE=pr-${{ github.event.number }}-${{ env.GITHUB_HEAD_REF_SLUG }}" >> $GITHUB_ENV
+
+      - name: create a github deployment
+        uses: bobheadxi/deployments@v0.5.2
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ env.STAGE }}
+          ref: ${{ github.head_ref }}
+          no_override: false
+          transient: true
+
+      - name: checkout the files
+        uses: actions/checkout@v2
+
+      # - name: fet tag for docker image
+      #   id: docker_tag
+      #   uses: rlespinasse/github-slug-action@v3.x
+      # - name: set STAGE variable in environment for next steps
+      #   run: |
+      #     echo Preparing environment variables
+      #     TAG=$(echo ${{ env.STAGE }}) 
+      #     echo $TAG
+      #     cat .env
+      #     sed -i '/TAG/c\TAG='"${TAG}"'' .env
+      #     cat .env
+      #     echo "TAG=$TAG" >> $GITHUB_ENV  
+
+
+      - name: Assume role using OIDC
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: arn:aws:iam::802288441694:role/mmandic223-cdk-ghactions-rekognition-deploy
+          aws-region: eu-west-1
+      
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Lint with pylint
+        run: |
+          make lint
+      - name: Test with pytest
+        run: |
+          make test
+      - name: Format code
+        run: |
+          make format
+
+      - name: cdk diff dev-stack-rekognition
+        uses: youyo/aws-cdk-github-actions@v2
+        with:
+          cdk_subcommand: 'diff'
+          actions_comment: false
+          # cdk_args: '--require-approval never'
+          cdk_stack: 'dev-stack-rekognition'
+
+      - name: cdk deploy dev-stack-rekognition
+        uses: youyo/aws-cdk-github-actions@v2
+        with:
+          cdk_subcommand: 'deploy'
+          actions_comment: false
+          cdk_args: '--require-approval never'
+          cdk_stack: 'dev-stack-rekognition'
+
+      - name: cdk destroy dev-stack-rekognition
+        uses: youyo/aws-cdk-github-actions@v2
+        with:
+          cdk_subcommand: 'destroy'
+          actions_comment: false
+          cdk_stack: 'dev-stack-rekognition'
+
+      - name: update the github deployment status
+        uses: bobheadxi/deployments@v0.5.2
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env_url: ${{ steps.cdk_deploy.outputs.env_url }}

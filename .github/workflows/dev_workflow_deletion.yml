@@ -2,8 +2,7 @@ name: "Dev commit clean-up"
 
 on:
   workflow_run:
-    workflows:
-      - dev pipeline
+    workflows: ["dev pipeline"]
     types:
       - completed
     branch: dev

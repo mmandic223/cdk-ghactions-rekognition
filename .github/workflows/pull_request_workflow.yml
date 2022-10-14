@@ -73,28 +73,28 @@ jobs:
         run: |
           make format
 
-      - name: cdk diff networking-stack-mm
+      - name: cdk diff dev-stack-rekognition
         uses: youyo/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'diff'
           actions_comment: false
           # cdk_args: '--require-approval never'
-          cdk_stack: 'cdk-ghactions-rekognition'
+          cdk_stack: 'dev-stack-rekognition'
 
-      - name: cdk deploy cdk-ghactions-rekognition
+      - name: cdk deploy dev-stack-rekognition
         uses: youyo/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'deploy'
           actions_comment: false
           cdk_args: '--require-approval never'
-          cdk_stack: 'cdk-ghactions-rekognition'
+          cdk_stack: 'dev-stack-rekognition'
 
-      - name: cdk destroy cdk-ghactions-rekognition
+      - name: cdk destroy dev-stack-rekognition
         uses: youyo/aws-cdk-github-actions@v2
         with:
           cdk_subcommand: 'destroy'
           actions_comment: false
-          cdk_stack: 'cdk-ghactions-rekognition'
+          cdk_stack: 'dev-stack-rekognition'
 
       - name: update the github deployment status
         uses: bobheadxi/deployments@v0.5.2
